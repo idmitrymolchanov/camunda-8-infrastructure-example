@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1bm12ug" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.4.0">
+  <bpmn:process id="test-process-for-testing" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="knjnknkjnjknknknkjnkjnnknjk">
+      <bpmn:outgoing>Flow_1c20ung</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1c20ung" sourceRef="StartEvent_1" targetRef="TestServiceTaskId" />
+    <bpmn:endEvent id="Event_1j1fism">
+      <bpmn:incoming>Flow_0rikt53</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0m1wee8" sourceRef="TestServiceTaskId" targetRef="TestSendMessageTaskId" />
+    <bpmn:serviceTask id="TestServiceTaskId" name="Test ServiceTask">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="testServiceTask" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1c20ung</bpmn:incoming>
+      <bpmn:outgoing>Flow_0m1wee8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1uqel1l" sourceRef="TestSendMessageTaskId" targetRef="TestReceiveMessageTaskId" />
+    <bpmn:sequenceFlow id="Flow_1lc37as" sourceRef="TestReceiveMessageTaskId" targetRef="TestUserTaskId" />
+    <bpmn:sequenceFlow id="Flow_0rikt53" sourceRef="TestUserTaskId" targetRef="Event_1j1fism" />
+    <bpmn:sendTask id="TestSendMessageTaskId" name="Test Send Message Task">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="testSendTask" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0m1wee8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1uqel1l</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:receiveTask id="TestReceiveMessageTaskId" name="Test Receive Message Task" messageRef="Message_02kuruh">
+      <bpmn:incoming>Flow_1uqel1l</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lc37as</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:userTask id="TestUserTaskId" name="Test User Task">
+      <bpmn:incoming>Flow_1lc37as</bpmn:incoming>
+      <bpmn:outgoing>Flow_0rikt53</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmn:message id="Message_2kptkfc" name="Message_2kptkfc">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=key" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_02kuruh" name="TestMessageName">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=testMessageTaskCorKey" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-process-for-testing">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="153" y="142" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1j1fism_di" bpmnElement="Event_1j1fism">
+        <dc:Bounds x="842" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1g182fe_di" bpmnElement="TestServiceTaskId">
+        <dc:Bounds x="280" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tbsch1_di" bpmnElement="TestSendMessageTaskId">
+        <dc:Bounds x="410" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0d6l29k_di" bpmnElement="TestReceiveMessageTaskId">
+        <dc:Bounds x="540" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ks1591_di" bpmnElement="TestUserTaskId">
+        <dc:Bounds x="670" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1c20ung_di" bpmnElement="Flow_1c20ung">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="280" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m1wee8_di" bpmnElement="Flow_0m1wee8">
+        <di:waypoint x="380" y="117" />
+        <di:waypoint x="410" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uqel1l_di" bpmnElement="Flow_1uqel1l">
+        <di:waypoint x="510" y="117" />
+        <di:waypoint x="540" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1lc37as_di" bpmnElement="Flow_1lc37as">
+        <di:waypoint x="640" y="117" />
+        <di:waypoint x="670" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0rikt53_di" bpmnElement="Flow_0rikt53">
+        <di:waypoint x="770" y="117" />
+        <di:waypoint x="842" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

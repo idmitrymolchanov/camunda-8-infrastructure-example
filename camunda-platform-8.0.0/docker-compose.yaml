@@ -1,14 +1,3 @@
-# While the Docker images themselves are supported for production usage,
-# this docker-compose.yaml is designed to be used by developers to run
-# an environment locally. It is not designed to be used in production.
-# We recommend to use Kubernetes in production with our Helm Charts:
-# https://docs.camunda.io/docs/self-managed/platform-deployment/kubernetes-helm/
-# For local development, we recommend using KIND instead of `docker-compose`:
-# https://docs.camunda.io/docs/self-managed/platform-deployment/kubernetes-helm/#installing-the-camunda-helm-chart-locally-using-kind
-
-# This is a full configuration with Zeebe, Operate, Tasklist, Optimize, Identity, Keycloak, and Elasticsearch
-# See docker-compose-core.yml for a lightweight configuration that does not include Optimize, Identity, and Keycloak.
-
 services:
 
   zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
@@ -33,29 +22,60 @@ services:
     depends_on:
       - elasticsearch
 
+  zeebe-http-worker:
+    container_name: zeebe-http-worker
+    image: ghcr.io/camunda-community-hub/zeebe-http-worker:1.0.0
+    environment:
+      - ZEEBE_WORKER_DEFAULTTYPE:io.camunda:http-json:1
+      - zeebe.client.broker.contactPoint=zeebe:26500
+    depends_on:
+      - zeebe
+    networks:
+      - camunda-platform
+
+  connectors: # https://docs.camunda.io/docs/components/integration-framework/connectors/out-of-the-box-connectors/available-connectors-overview/
+    image: camunda/connectors-bundle:latest
+    container_name: connectors
+    ports:
+      - "8086:8080"
+    environment:
+      - ZEEBE_CLIENT_SECURITY_PLAINTEXT=false
+      - ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS=zeebe:26500
+      - CAMUNDA_OPERATE_CLIENT_URL=http://operate:8080
+      - CONNECTOR_HTTP_REST_TYPE='io.camunda:http-json:1'
+    networks:
+      - camunda-platform
+#    depends_on:
+#      - zeebe
+#      - operate
+
   operate: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#operate
     image: camunda/operate:${CAMUNDA_PLATFORM_VERSION:-8.0.0}
-    container_name: operate
+    container_name: operate_without_kk
     ports:
-      - "8081:8080"
+      - "8091:8080"
     environment: # https://docs.camunda.io/docs/self-managed/operate-deployment/configuration/
       - CAMUNDA_OPERATE_ZEEBE_GATEWAYADDRESS=zeebe:26500
       - CAMUNDA_OPERATE_ELASTICSEARCH_URL=http://elasticsearch:9200
       - CAMUNDA_OPERATE_ZEEBEELASTICSEARCH_URL=http://elasticsearch:9200
       # For more information regarding configuration with Identity see:
       # https://docs.camunda.io/docs/self-managed/operate-deployment/authentication/#identity
-      - SPRING_PROFILES_ACTIVE=identity-auth
-      - CAMUNDA_OPERATE_IDENTITY_ISSUER_URL=http://localhost:18080/auth/realms/camunda-platform
-      - CAMUNDA_OPERATE_IDENTITY_ISSUER_BACKEND_URL=http://keycloak:8080/auth/realms/camunda-platform
-      - CAMUNDA_OPERATE_IDENTITY_CLIENTID=operate
-      - CAMUNDA_OPERATE_IDENTITY_CLIENTSECRET=XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
-      - CAMUNDA_OPERATE_IDENTITY_AUDIENCE=operate-api
+      - CAMUNDA_OPERATE_USER_ID=admin
+      - CAMUNDA_OPERATE_DISPLAY_NAME=admin
+      - CAMUNDA_OPERATE_PASSWORD=admin
+      - CAMUNDA_OPERATE_ROLES=OWNER
+#      - SPRING_PROFILES_ACTIVE=identity-auth
+#      - CAMUNDA_OPERATE_IDENTITY_ISSUER_URL=http://localhost:18080/auth/realms/camunda-platform
+#      - CAMUNDA_OPERATE_IDENTITY_ISSUER_BACKEND_URL=http://keycloak:8080/auth/realms/camunda-platform
+#      - CAMUNDA_OPERATE_IDENTITY_CLIENTID=operate
+#      - CAMUNDA_OPERATE_IDENTITY_CLIENTSECRET=XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
+#      - CAMUNDA_OPERATE_IDENTITY_AUDIENCE=operate-api
     networks:
       - camunda-platform
-      - identity-network
+#      - identity-network
     depends_on:
       - zeebe
-      - identity
+#      - identity
       - elasticsearch
 
   tasklist: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#tasklist
@@ -110,7 +130,7 @@ services:
 
   identity: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#identity
     container_name: identity
-    image: camunda/identity:8.0.0
+    image: camunda/identity:latest
     ports:
       - "8084:8084"
     environment: # https://docs.camunda.io/docs/self-managed/identity/deployment/configuration-variables/
@@ -123,9 +143,9 @@ services:
       KEYCLOAK_INIT_TASKLIST_ROOT_URL: http://localhost:8082
       KEYCLOAK_INIT_OPTIMIZE_SECRET: XALaRPl5qwTEItdwCMiPS62nVpKs7dL7
       KEYCLOAK_INIT_OPTIMIZE_ROOT_URL: http://localhost:8083
-      KEYCLOAK_USERS_0_USERNAME: "demo"
-      KEYCLOAK_USERS_0_PASSWORD: "demo"
-      KEYCLOAK_USERS_0_FIRST_NAME: "demo"
+      KEYCLOAK_USERS_0_USERNAME: "admin"
+      KEYCLOAK_USERS_0_PASSWORD: "admin"
+      KEYCLOAK_USERS_0_FIRST_NAME: "admin"
       KEYCLOAK_USERS_0_ROLES_0: "Identity"
       KEYCLOAK_USERS_0_ROLES_1: "Optimize"
       KEYCLOAK_USERS_0_ROLES_2: "Operate"
@@ -138,7 +158,7 @@ services:
 
   keycloak: # https://hub.docker.com/r/jboss/keycloak
     container_name: keycloak
-    image: jboss/keycloak:${KEYCLOAK_VERSION:-16.1.1}
+    image: sleighzy/keycloak
     ports:
       - "18080:8080"
     environment:
@@ -170,7 +190,7 @@ services:
       timeout: 5s
       retries: 3
     volumes:
-      - elastic:/usr/share/elasticsearch/data
+      - elastic:/usr/share/elasticsearch7/data
     networks:
       - camunda-platform
 

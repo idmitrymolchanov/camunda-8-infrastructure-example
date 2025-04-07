@@ -1,0 +1,433 @@
+services:
+
+#  zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
+#    image: camunda/zeebe:latest
+#    container_name: zeebe
+#    ports:
+#      - "26500:26500"
+#      - "9600:9600"
+#    environment: # https://docs.camunda.io/docs/self-managed/zeebe-deployment/configuration/environment-variables/
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_CLASSNAME=io.camunda.zeebe.exporter.ElasticsearchExporter
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_URL=http://elasticsearch:9200
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_SIZE=1
+#      # allow running with low disk space
+#      - ZEEBE_BROKER_DATA_DISKUSAGECOMMANDWATERMARK=0.998
+#      - ZEEBE_BROKER_DATA_DISKUSAGEREPLICATIONWATERMARK=0.999
+#
+#      - SPRING_CONFIG_ADDITIONAL_LOCATION=/usr/local/zeebe/config/exporter.yml
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_CLASSNAME=io.zeebe.exporters.kafka.KafkaExporter
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_JARPATH=/usr/local/zeebe/lib/zeebe-kafka-exporter.jar
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_SERVERS=PLAINTEXT://192.168.1.30:9092
+#      - "JAVA_TOOL_OPTIONS=-Xms512m -Xmx512m"
+##    restart: always
+#    volumes:
+#      - ./exporter/exporter.yml:/usr/local/zeebe/config/exporter.yml
+#      - zeebe:/usr/local/zeebe-latest/data
+#      - /Users/home/git/camunda/camunda-platform-8.0.0/zeebe-kafka-exporter-3.1.1-SNAPSHOT-jar-with-dependencies.jar:/usr/local/zeebe/lib/zeebe-kafka-exporter.jar
+#    networks:
+#      - camunda-platform
+#    depends_on:
+#      - elasticsearch
+
+#  zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
+#    image: camunda/zeebe:8.5.1
+#    container_name: zeebe-kafka-8.5
+#    ports:
+#      - "26500:26500"
+#      - "9600:9600"
+#    environment: # https://docs.camunda.io/docs/self-managed/zeebe-deployment/configuration/environment-variables/
+#      - ZEEBE_BROKER_DATA_DISKUSAGECOMMANDWATERMARK=0.998
+#      - ZEEBE_BROKER_DATA_DISKUSAGEREPLICATIONWATERMARK=0.999
+#
+#      - SPRING_CONFIG_ADDITIONAL_LOCATION=/usr/local/zeebe/config/exporter.yml
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_CLASSNAME=io.zeebe.exporters.kafka.KafkaExporter
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_JARPATH=/usr/local/zeebe/lib/zeebe-kafka-exporter.jar
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_SERVERS=kafka:9092
+#    volumes:
+#      - ./exporter/exporter.yml:/usr/local/zeebe/config/exporter.yml
+#      - zeebe:/usr/local/zeebe-latest/data
+#      - /Users/home/git/camunda/camunda-platform-8.0.0/zeebe-kafka-exporter-3.1.1-SNAPSHOT-jar-with-dependencies.jar:/usr/local/zeebe/lib/zeebe-kafka-exporter.jar
+#    networks:
+#      - camunda-platform
+
+  #  zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
+  #    image: camunda/zeebe:latest
+  #    container_name: zeebe
+  #    ports:
+  #      - "26500:26500"
+  #      - "9600:9600"
+  #    environment: # https://docs.camunda.io/docs/self-managed/zeebe-deployment/configuration/environment-variables/
+  ##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_CLASSNAME=io.camunda.zeebe.exporter.ElasticsearchExporter
+  ##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_URL=http://elasticsearch:9200
+  ##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_SIZE=1
+  #      # allow running with low disk space
+  #      - ZEEBE_BROKER_DATA_DISKUSAGECOMMANDWATERMARK=0.998
+  #      - ZEEBE_BROKER_DATA_DISKUSAGEREPLICATIONWATERMARK=0.999
+  #
+  #      - SPRING_CONFIG_ADDITIONAL_LOCATION=/usr/local/zeebe/config/exporter.yml
+  #      - ZEEBE_BROKER_EXPORTERS_KAFKA_CLASSNAME=io.zeebe.exporters.kafka.KafkaExporter
+  #      - ZEEBE_BROKER_EXPORTERS_KAFKA_JARPATH=/usr/local/zeebe/lib/zeebe-kafka-exporter.jar
+  #      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_SERVERS=PLAINTEXT://192.168.1.30:9092
+  #      - "JAVA_TOOL_OPTIONS=-Xms512m -Xmx512m"
+  ##    restart: always
+  #    volumes:
+  #      - ./exporter/exporter.yml:/usr/local/zeebe/config/exporter.yml
+  #      - zeebe:/usr/local/zeebe-latest/data
+  #      - /Users/home/git/camunda/camunda-platform-8.0.0/zeebe-kafka-exporter-3.1.1-SNAPSHOT-jar-with-dependencies.jar:/usr/local/zeebe/lib/zeebe-kafka-exporter.jar
+  #    networks:
+  #      - camunda-platform
+  #    depends_on:
+  #      - elasticsearch
+
+
+
+
+
+
+#
+#  zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
+#    image: camunda/zeebe:8.5.7
+#    container_name: zeebe-8.5
+#    ports:
+#      - "26500:26500"
+#      - "9600:9600"
+#    environment: # https://docs.camunda.io/docs/self-managed/zeebe-deployment/configuration/environment-variables/
+#      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_CLASSNAME=io.camunda.zeebe.exporter.ElasticsearchExporter
+#      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_URL=http://elasticsearch:9200
+#      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_SIZE=1
+#      # allow running with low disk space
+#      - ZEEBE_BROKER_DATA_DISKUSAGECOMMANDWATERMARK=0.998
+#      - ZEEBE_BROKER_DATA_DISKUSAGEREPLICATIONWATERMARK=0.999
+#      - "JAVA_TOOL_OPTIONS=-Xms512m -Xmx512m"
+#    #    restart: always
+#    volumes:
+#      - zeebe:/usr/local/zeebe-latest-5/data
+#    networks:
+#      - camunda-platform
+#    depends_on:
+#      - elasticsearch
+
+
+  zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
+    image: camunda/zeebe:8.5.1
+    container_name: zeebe-8.5-elastic-kafka
+    ports:
+      - "26500:26500"
+      - "9600:9600"
+    environment: # https://docs.camunda.io/docs/self-managed/zeebe-deployment/configuration/environment-variables/
+      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_CLASSNAME=io.camunda.zeebe.exporter.ElasticsearchExporter
+      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_URL=http://elasticsearch:9200
+      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_DELAY=5
+      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_SIZE=1000
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_CLASSNAME=io.zeebe.exporters.kafka.KafkaExporter
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_SERVERS=PLAINTEXT://192.168.1.3:9092
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_TOPIC=zeebe-records-kafka
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_ACKS=all
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_RETRIES=2147483647
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION=1
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_MAX_BATCH_SIZE=1000
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_MAX_IN_FLIGHT_BATCHES=5
+      - ZEEBE_BROKER_EXPORTERS_KAFKA_JARPATH=/usr/local/zeebe/exporters/kafka-exporter.jar
+
+      # allow running with low disk space
+      - ZEEBE_BROKER_DATA_DISKUSAGECOMMANDWATERMARK=0.998
+      - ZEEBE_BROKER_DATA_DISKUSAGEREPLICATIONWATERMARK=0.999
+      - "JAVA_TOOL_OPTIONS=-Xms512m -Xmx512m"
+    #    restart: always
+    volumes:
+      - zeebe:/usr/local/zeebe-latest-6/data
+      - /Users/home/git/camunda/camunda-platform-8.0.0/zeebe-kafka-exporter-3.1.2-SNAPSHOT-jar-with-dependencies.jar:/usr/local/zeebe/exporters/kafka-exporter.jar
+#      - /Users/home/git/camunda/camunda-platform-8.0.0/diagram_1.bpmn:/usr/local/zeebe/exporters/diagram.bpmn
+      - /Users/home/IdeaProjects/ump-alfabank/camunda/camunda-8-example-project/src/main/resources/bpmn/kafka_export_test_names.bpmn:/usr/local/zeebe/exporters/diagram.bpmn
+    networks:
+      - camunda-platform
+    depends_on:
+      - elasticsearch
+
+#  zeebe: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#zeebe
+#    image: camunda/zeebe:8.5.1
+#    container_name: zeebe-8.5-kafka-only
+#    ports:
+#      - "26500:26500"
+#      - "9600:9600"
+#    environment: # https://docs.camunda.io/docs/self-managed/zeebe-deployment/configuration/environment-variables/
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_CLASSNAME=io.camunda.zeebe.exporter.ElasticsearchExporter
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_URL=http://elasticsearch:9200
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_DELAY=5
+##      - ZEEBE_BROKER_EXPORTERS_ELASTICSEARCH_ARGS_BULK_SIZE=1000
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_CLASSNAME=io.zeebe.exporters.kafka.KafkaExporter
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_SERVERS=PLAINTEXT://192.168.1.3:9092
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_TOPIC=zeebe-records-kafka
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_ACKS=all
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_RETRIES=2147483647
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION=1
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_MAX_BATCH_SIZE=1000
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_ARGS_MAX_IN_FLIGHT_BATCHES=5
+#      - ZEEBE_BROKER_EXPORTERS_KAFKA_JARPATH=/usr/local/zeebe/exporters/kafka-exporter.jar
+#
+#      # allow running with low disk space
+#      - ZEEBE_BROKER_DATA_DISKUSAGECOMMANDWATERMARK=0.998
+#      - ZEEBE_BROKER_DATA_DISKUSAGEREPLICATIONWATERMARK=0.999
+#      - "JAVA_TOOL_OPTIONS=-Xms512m -Xmx512m"
+#    #    restart: always
+#    volumes:
+#      - zeebe:/usr/local/zeebe-latest-7/data
+#      - /Users/home/git/camunda/camunda-platform-8.0.0/zeebe-kafka-exporter-3.1.2-SNAPSHOT-jar-with-dependencies.jar:/usr/local/zeebe/exporters/kafka-exporter.jar
+#    networks:
+#      - camunda-platform
+##    depends_on:
+##      - elasticsearch
+
+  zeebe-http-worker:
+    container_name: zeebe-http-worker
+    image: ghcr.io/camunda-community-hub/zeebe-http-worker:1.0.0
+    environment:
+      - zeebe.worker.defaultType=io.camunda:http-json:1
+      - zeebe.client.broker.contactPoint=zeebe:26500
+    depends_on:
+      - zeebe
+    networks:
+      - camunda-platform
+
+  simple-monitor-in-memory-kafka:
+    container_name: zeebe-simple-monitor-in-memory-kafka
+    image: ghcr.io/camunda-community-hub/zeebe-simple-monitor:2.7.2
+    environment:
+      - zeebe.client.broker.gateway-address=zeebe:26500
+      - zeebe-importer=kafka
+      - spring.kafka.bootstrap-servers=kafka:9092
+      - spring.kafka.template.default-topic=zeebe
+      - spring.kafka.custom.concurrency=5
+      - spring.profiles.active=kafka
+    ports:
+      - "8097:8082"
+    depends_on:
+      - zeebe
+    networks:
+      - camunda-platform
+
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - camunda-platform
+    profiles:
+      - kafka
+
+  kafka:
+    image: docker.io/bitnami/kafka:3.4
+    ports:
+      - "9093:9093"
+    environment:
+      - KAFKA_ENABLE_KRAFT=no
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    networks:
+      - camunda-platform
+    profiles:
+      - kafka
+
+  connectors: # https://docs.camunda.io/docs/components/integration-framework/connectors/out-of-the-box-connectors/available-connectors-overview/
+    image: camunda/connectors-bundle:latest
+    container_name: connectors
+    ports:
+      - "8086:8080"
+    environment:
+      - ZEEBE_CLIENT_SECURITY_PLAINTEXT=false
+      - ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS=zeebe:26500
+      - CAMUNDA_OPERATE_CLIENT_URL=http://operate:8080
+      - CONNECTOR_HTTP_REST_TYPE='io.camunda:http-json:1'
+    networks:
+      - camunda-platform
+
+  operate: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#operate
+    image: camunda/operate:8.5.0
+    container_name: operate_without_kk
+    ports:
+      - "8091:8080"
+    environment: # https://docs.camunda.io/docs/self-managed/operate-deployment/configuration/
+      - CAMUNDA_OPERATE_ZEEBE_GATEWAYADDRESS=zeebe:26500
+      - CAMUNDA_OPERATE_ELASTICSEARCH_URL=http://elasticsearch:9200
+      - CAMUNDA_OPERATE_ELASTICSEARCH_USERNAME=root
+      - CAMUNDA_OPERATE_ELASTICSEARCH_PASSWORD=root
+      - CAMUNDA_OPERATE_ZEEBEELASTICSEARCH_URL=http://elasticsearch:9200
+      # For more information regarding configuration with Identity see:
+      # https://docs.camunda.io/docs/self-managed/operate-deployment/authentication/#identity
+      - CAMUNDA_OPERATE_USER_ID=admin
+      - CAMUNDA_OPERATE_DISPLAY_NAME=admin
+      - CAMUNDA_OPERATE_PASSWORD=admin
+      - CAMUNDA_OPERATE_ROLES=OWNER
+    networks:
+      - camunda-platform
+    depends_on:
+      - zeebe
+      - elasticsearch
+
+  tasklist: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#tasklist
+    image: camunda/tasklist:latest
+    container_name: tasklist
+    ports:
+      - "8089:8080"
+    environment: # https://docs.camunda.io/docs/self-managed/tasklist-deployment/configuration/
+      - CAMUNDA_TASKLIST_ZEEBE_GATEWAYADDRESS=zeebe:26500
+      - CAMUNDA_TASKLIST_ELASTICSEARCH_URL=http://elasticsearch:9200
+      - CAMUNDA_TASKLIST_ZEEBEELASTICSEARCH_URL=http://elasticsearch:9200
+      - management.endpoints.web.exposure.include=health
+      - management.endpoint.health.probes.enabled=true
+    healthcheck:
+      test: [ "CMD-SHELL", "wget -O - -q 'http://localhost:8080/actuator/health/readiness'" ]
+      interval: 30s
+      timeout: 1s
+      retries: 5
+      start_period: 30s
+    networks:
+      - camunda-platform
+    depends_on:
+      - zeebe
+      - elasticsearch
+
+  camunda-platform-rest-api:
+    container_name: camunda-platform-rest-api
+    image: ghcr.io/korthout/camunda-platform-rest-api:${CAMUNDA_PLATFORM_REST_API_VERSION:-latest}
+    ports:
+      - "8090:8080"
+    environment:
+      - ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS=zeebe:26500
+      - ZEEBE_CLIENT_SECURITY_PLAINTEXT=true
+      - CAMUNDA_OPERATE_CLIENT_URL=http://operate:8080
+      - CAMUNDA_OPERATE_CLIENT_USERNAME=admin
+      - CAMUNDA_OPERATE_CLIENT_PASSWORD=admin
+    networks:
+      - camunda-platform
+    depends_on:
+      - zeebe
+      - operate
+
+  optimize: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#optimize
+    image: camunda/optimize:latest
+    container_name: optimize
+    ports:
+      - "8083:8090"
+    environment: # https://docs.camunda.io/docs/self-managed/optimize-deployment/setup/installation/#available-environment-variables
+      - SPRING_PROFILES_ACTIVE=ccsm
+      - CAMUNDA_OPTIMIZE_IDENTITY_ISSUER_URL=http://identity:8084/auth
+      - CAMUNDA_OPTIMIZE_IDENTITY_ISSUER_BACKEND_URL=http://keycloak:8080/auth/realms/camunda-platform
+      - CAMUNDA_OPTIMIZE_IDENTITY_CLIENTID=optimize
+      - CAMUNDA_OPTIMIZE_IDENTITY_CLIENTSECRET=tuJoj0rAUVVYjuIPR74F1AWAZQAIFd5Z
+      - CAMUNDA_OPTIMIZE_IDENTITY_AUDIENCE=optimize-api
+      - OPTIMIZE_ELASTICSEARCH_HOST=elasticsearch
+      - OPTIMIZE_ELASTICSEARCH_HTTP_PORT=9200
+      - CAMUNDA_OPTIMIZE_SECURITY_AUTH_COOKIE_SAME_SITE_ENABLED=false
+#      - CAMUNDA_OPTIMIZE_ENTERPRISE=false
+      - CAMUNDA_OPTIMIZE_ZEEBE_ENABLED=true
+      - CAMUNDA_OPTIMIZE_ZEEBE_NAME=zeebe-record
+      - CAMUNDA_OPTIMIZE_ZEEBE_PARTITION_COUNT=1
+      - CAMUNDA_OPTIMIZE_UI_LOGOUT_HIDDEN=true
+#      - CAMUNDA_OPTIMIZE_SHARING_ENABLED=true
+      - CAMUNDA_OPTIMIZE_IDENTITY_BASE_URL=http://identity:8084
+      - management.endpoints.web.exposure.include=health
+      - management.endpoint.health.probes.enabled=true
+#    restart: on-failure
+    volumes:
+      - "./.optimize/environment-config.yaml:/optimize/config/environment-config.yaml"
+    networks:
+      - camunda-platform
+#      - identity-network
+    depends_on:
+      - identity
+      - elasticsearch
+
+  keycloak: # https://hub.docker.com/r/jboss/keycloak
+    container_name: keycloak
+    image: sleighzy/keycloak
+    ports:
+      - "18080:8080"
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    networks:
+      - identity-network
+
+  identity: # https://docs.camunda.io/docs/self-managed/platform-deployment/docker/#identity
+    container_name: identity
+    image: camunda/identity:latest
+    ports:
+      - "8084:8084"
+    environment: # https://docs.camunda.io/docs/self-managed/identity/deployment/configuration-variables/
+      SERVER_PORT: 8084
+      IDENTITY_URL: http://localhost:8084
+      KEYCLOAK_URL: http://keycloak:8080/auth
+      KEYCLOAK_REALM: camunda-platform
+#      IDENTITY_AUTH_PROVIDER_ISSUER_URL: http://keycloak:8080/auth/realms/camunda-platform
+      IDENTITY_AUTH_PROVIDER_BACKEND_URL: http://keycloak:8080/auth/realms/camunda-platform
+      KEYCLOAK_INIT_OPTIMIZE_SECRET: tuJoj0rAUVVYjuIPR74F1AWAZQAIFd5Z
+      KEYCLOAK_INIT_OPTIMIZE_ROOT_URL: http://localhost:8083
+#      KEYCLOAK_INIT_ZEEBE_NAME: zeebe
+      KEYCLOAK_USERS_0_USERNAME: "demo"
+      KEYCLOAK_USERS_0_PASSWORD: "demo"
+      KEYCLOAK_USERS_0_FIRST_NAME: "demo"
+      KEYCLOAK_USERS_0_EMAIL: "demo@acme.com"
+      KEYCLOAK_USERS_0_ROLES_0: "Identity"
+      KEYCLOAK_USERS_0_ROLES_1: "Optimize"
+      IDENTITY_CLIENT_ID: camunda-identity
+      IDENTITY_CLIENT_SECRET: EUMCzvaNgKgiJigR5SsadUmUNDdwhkMF
+#      KEYCLOAK_CLIENTS_0_SECRET: EUMCzvaNgKgiJigR5SsadUmUNDdwhkMF
+      KEYCLOAK_SETUP_PASSWORD: admin
+#      KEYCLOAK_SETUP_REALM: camunda-identity
+#      USER_RESTRICTIONS_ENABLED: false
+#      RESOURCE_PERMISSIONS_ENABLED: true
+#      KEYCLOAK_CLIENTS_0_PERMISSIONS_0_RESOURCE_SERVER_ID: zeebe-api
+#      KEYCLOAK_CLIENTS_0_PERMISSIONS_0_DEFINITION: write:*
+    networks:
+      - identity-network
+    depends_on:
+      - keycloak
+
+  elasticsearch: # https://hub.docker.com/_/elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-8.12.2}
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      # allow running with low disk space
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - xpack.security.enabled=false
+      - xpack.security.enrollment.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:9200/_cat/health | grep -q green" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - elastic:/usr/share/elasticsearch-9/data
+    networks:
+      - camunda-platform
+
+volumes:
+  zeebe:
+  elastic:
+
+networks:
+  # Note there are two bridge networks: One for Camunda Platform and one for Identity.
+  # Operate, Tasklist, and Optimize use both
+  camunda-platform:
+  identity-network:
+  zeebe-network:
